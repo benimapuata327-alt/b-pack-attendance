@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #F4F5F6;
+    color: #343A40;
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #D2D5D9; border-radius: 6px; }
+  ::-webkit-scrollbar-thumb:hover { background: #AEB3B9; }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-card border border-graphite-100;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-card-hover hover:border-graphite-200;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-1;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 text-white px-4 py-2.5 hover:bg-brand-600 focus:ring-brand-300 shadow-sm hover:shadow-brand;
+  }
+  .btn-secondary {
+    @apply btn bg-graphite-600 text-white px-4 py-2.5 hover:bg-graphite-700 focus:ring-graphite-400;
+  }
+  .btn-ghost {
+    @apply btn bg-white text-graphite-600 border border-graphite-200 px-4 py-2.5 hover:bg-graphite-50 focus:ring-graphite-300;
+  }
+  .btn-danger {
+    @apply btn bg-red-500 text-white px-4 py-2.5 hover:bg-red-600 focus:ring-red-300;
+  }
+  .btn-sm { @apply px-3 py-1.5 text-sm; }
+  .input {
+    @apply w-full rounded-lg border border-graphite-200 bg-white px-3.5 py-2.5 text-graphite-600 placeholder-graphite-300 focus:outline-none focus:ring-2 focus:ring-brand-300 focus:border-brand-400 transition;
+  }
+  .label { @apply block text-sm font-medium text-graphite-600 mb-1.5; }
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .badge-present { @apply badge bg-green-50 text-green-700 border border-green-200; }
+  .badge-absent { @apply badge bg-red-50 text-red-700 border border-red-200; }
+  .badge-late { @apply badge bg-amber-50 text-amber-700 border border-amber-200; }
+  .badge-active { @apply badge bg-green-50 text-green-700 border border-green-200; }
+  .badge-inactive { @apply badge bg-graphite-100 text-graphite-500 border border-graphite-200; }
+  .table-wrap { @apply overflow-x-auto; }
+  .table { @apply w-full text-sm; }
+  .table thead th { @apply text-left font-semibold text-graphite-500 uppercase text-xs tracking-wide px-4 py-3 bg-graphite-50 border-b border-graphite-200; }
+  .table tbody td { @apply px-4 py-3 text-graphite-600 border-b border-graphite-100; }
+  .table tbody tr { @apply transition-colors hover:bg-brand-50/40; }
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-graphite-300 font-medium transition-all duration-150 hover:bg-graphite-700/60 hover:text-white;
+  }
+  .sidebar-link-active { @apply bg-brand-500 text-white hover:bg-brand-500 hover:text-white shadow-brand; }
+  .section-title { @apply text-lg font-display font-bold text-graphite-600; }
+}

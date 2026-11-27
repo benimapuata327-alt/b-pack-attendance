@@ -1,3 +1,4 @@
+
 import type { ReactNode } from 'react';
 import { Loader2 } from 'lucide-react';
 
@@ -26,18 +27,49 @@ export function ErrorState({ message, onRetry }: { message: string; onRetry?: ()
 export function ConfirmDialog({
   open, onClose, onConfirm, title, message, confirmLabel = 'Confirmer', danger,
 }: {
-  open: boolean; onClose: () => void; onConfirm: () => void;
-  title: string; message: ReactNode; confirmLabel?: string; danger?: boolean;
+  open: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  title: string;
+  message: ReactNode;
+  confirmLabel?: string;
+  danger?: boolean;
 }) {
+  if (!open) return null;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in"
+      onClick={onClose}
+    >
       <div className="absolute inset-0 bg-graphite-900/50 backdrop-blur-sm" />
-      <div className="relative w-full max-w-sm bg-white rounded-2xl shadow-xl p-6 animate-scale-in" onClick={(e) => e.stopPropagation()}>
-        <h3 className="font-display font-bold text-graphite-600 text-lg">{title}</h3>
-        <div className="text-sm text-graphite-500 mt-2">{message}</div>
+
+      <div
+        className="relative w-full max-w-sm bg-white rounded-2xl shadow-xl p-6 animate-scale-in"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h3 className="font-display font-bold text-graphite-600 text-lg">
+          {title}
+        </h3>
+
+        <div className="text-sm text-graphite-500 mt-2">
+          {message}
+        </div>
+
         <div className="flex justify-end gap-2 mt-5">
-          <button className="btn-ghost btn-sm" onClick={onClose}>Annuler</button>
-          <button className={`${danger ? 'btn-danger' : 'btn-primary'} btn-sm`} onClick={() => { onConfirm(); onClose(); }}>{confirmLabel}</button>
+          <button className="btn-ghost btn-sm" onClick={onClose}>
+            Annuler
+          </button>
+
+          <button
+            className={`${danger ? 'btn-danger' : 'btn-primary'} btn-sm`}
+            onClick={() => {
+              onConfirm();
+              onClose();
+            }}
+          >
+            {confirmLabel}
+          </button>
         </div>
       </div>
     </div>
